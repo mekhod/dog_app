@@ -13346,7 +13346,7 @@ ZREiRIgjIVQWIUKEOBJCZREiRIgj4f8ByrA0PB2hZvIAAAAASUVORK5CYII=
 <p><strong>Question 2:</strong> This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?</p>
 <p><strong>Answer:</strong></p>
 <ul>
-<li>It might be possible to use the image augmentation technique to train the model for unclear view of human faces.</li>
+<li>In the Haar cascades algorithm, the concept of Cascade of Classifiers is employed, which makes the algorithm capable of locating the regions with face(s) and discarding other regions of an image. Hence, if the image has a face which is not in the center, the Haar cascades algorithm can still detect the face. This algorithm is based on pixels contrasts in an image, for example, the pixels of eyes should be darker than the pixels of a nose; hence, a clear view of an image is not necessary as long as pixels contrast can be detected by the algorithm. Overal, the Haar cascades algorithm is appropriate for detecting human faces.</li>
 </ul>
 <p>We suggest the face detector from OpenCV as a potential way to detect human images in your algorithm, but you are free to explore other approaches, especially approaches that make use of deep learning :).  Please use the code cell below to design and test your own face detection algorithm.  If you decide to pursue this <em>optional</em> task, report performance on each of the datasets.</p>
 
@@ -13671,6 +13671,9 @@ By the ResNet-50 model, 100.00 percent of the first 100 images in dog_files were
 <p><img src="images/sample_cnn.png" alt="Sample CNN"></p>
 <p><strong>Question 4:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  If you chose to use the hinted architecture above, describe why you think that CNN architecture should work well for the image classification task.</p>
 <p><strong>Answer:</strong></p>
+<ul>
+<li>In this CNN architecture, the objective is to decrease the height and width and increase the depth (number of filters) of the inputs in every layer. This way, input images are mapped into features (filters) which can be fed into a softmax layer for classification. The three first layers in this CNN architecture decrease the high and width of the input images and increase the depth, then a global average pooling (GAP) layer is used to minimize overfitting, and finally a fully connected dense softmax layer is used for classification.</li>
+</ul>
 
 </div>
 </div>
@@ -14765,6 +14768,11 @@ Epoch 50/50
 <h3 id="(IMPLEMENTATION)-Test-Your-Algorithm-on-Sample-Images!">(IMPLEMENTATION) Test Your Algorithm on Sample Images!<a class="anchor-link" href="#(IMPLEMENTATION)-Test-Your-Algorithm-on-Sample-Images!">&#182;</a></h3><p>Test your algorithm at least six images on your computer.  Feel free to use any images you like.  Use at least two human and two dog images.</p>
 <p><strong>Question 6:</strong> Is the output better than you expected :) ?  Or worse :( ?  Provide at least three possible points of improvement for your algorithm.</p>
 <p><strong>Answer:</strong></p>
+<p>The output is as expected.</p>
+<p>This algorithm can be possibly improved by:</p>
+<p>1. Integrating image augmentation technique into the algorithm.</p>
+<p>2. Tuning the weights of the last layer(s) of the ResNet-50 architecture.</p>
+<p>3. Using other architectures (e.g. VGG-19, Inception, Xception) for computing bottleneck features.</p>
 
 </div>
 </div>
